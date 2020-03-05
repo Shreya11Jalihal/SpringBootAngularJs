@@ -1,0 +1,23 @@
+<html ng-app="myApp">
+<head>
+<meta charset="ISO-8859-1">
+<title>Simple Login Page</title>
+          <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.1/angular.min.js"></script>
+          <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.1/angular-resource.min.js"></script>
+          <script src="https://code.angularjs.org/1.3.0-rc.1/angular-messages.min.js"></script>
+          <script src="Js/app.js"></script>   
+</head>    
+    <body>
+     <form ng-controller="myController">
+        <label for="fname">FirstName</label>   
+        <input type="text" id="fname" name="fname" placeholder="Enter your first Name" ng-model="newData.fname"><br>
+        <label for="lname">LastName</label>
+        <input type="text" id="lname" name="lname" placeholder="Enter your last Name" ng-model="newData.lname"><br>
+        <input type="submit" ng-click="onClick()">
+     </form>
+        
+   </body>
+
+
+
+</html>
