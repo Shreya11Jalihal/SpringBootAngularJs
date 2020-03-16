@@ -1,22 +1,94 @@
-<html ng-app="myApp">
+<!DOCTYPE html>
+<html ng-app="myApp" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 <meta charset="ISO-8859-1">
 <title>Simple Login Page</title>
-          <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.1/angular.min.js"></script>
-          <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.1/angular-resource.min.js"></script>
-          <script src="https://code.angularjs.org/1.3.0-rc.1/angular-messages.min.js"></script>
-          <script src="Js/app.js"></script>   
-</head>    
-    <body>
-     <form ng-controller="myController">
-        <label for="fname">FirstName</label>   
-        <input type="text" id="fname" name="fname" placeholder="Enter your first Name" ng-model="newData.fname"><br>
-        <label for="lname">LastName</label>
-        <input type="text" id="lname" name="lname" placeholder="Enter your last Name" ng-model="newData.lname"><br>
-        <input type="submit" ng-click="onClick()">
-     </form>
-        
-   </body>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.1/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.1/angular-resource.min.js"></script>
+<script
+	src="https://code.angularjs.org/1.3.0-rc.1/angular-messages.min.js"></script>
+<script th:src="@{/js/app.js}"></script>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+
+<body>
+	<div class="container">
+		<h1>Signup and Join us!</h1>
+		<form name="userForm" ng-controller="myController"
+			ng-submit="onClick(name,password,email)" novalidate>
+			<div>
+				<label for="uname">Username</label> <input type="text" id="uname"
+					name="uname" placeholder="Enter your Username" ng-model="name"
+					class="input-generic" required /><br> <span
+					ng-show="userForm.uname.$dirty && userForm.uname.$error.required"
+					class="validation">*Your email is required</span>
+			</div>
+			<div>
+				<label for="password">Password</label> <input type="password"
+					class="input-generic" id="pass" name="pass"
+					placeholder="Enter your password" ng-model="password"
+					ng-minlength="5" ng-maxlength="10" required /><br> <span
+					ng-show="userForm.pass.$dirty && userForm.pass.$error.required"
+					class="validation">*Your Password is required</span> <span
+					ng-show="userForm.pass.$dirty && userForm.pass.$error.minlength"
+					class="validation">*Your Password is too short</span> <span
+					ng-show="userForm.pass.$dirty && userForm.pass.$error.maxlength"
+					class="validation">*Your Password is too long</span>
+			</div>
+			<div>
+				<label for="email">Email</label> <input type="email" id="email"
+					class="input-generic" name="email"
+					placeholder="Enter your Email Id" ng-model="email" required /><br>
+				<span
+					ng-show="userForm.email.$dirty && userForm.email.$error.required"
+					class="validation">*Your email is required</span> <span
+					ng-show="userForm.email.$dirty && userForm.email.$error.email"
+					class="validation">*Not a valid Email</span>
+			</div>
+			<br> <input type="submit" value="Sign up"
+				ng-disabled="userForm.$invalid" />
+			<p>
+				Do you already have an account?&nbsp;<a href="/thyme.html">Sign
+					in</a>
+			</p>
+
+			<div ng-if="flag">
+				<div id="mymodal" class="modal">
+					<div class="modal-content">
+						<div class="modal-header">
+							<span class="close">&times;</span>
+							<h2></h2>
+						</div>
+						<div class="modal-body">
+							<p>Welcome {{responsename}}! Your Signup is complete</p>
+							
+						</div>
+						<div class="modal-footer">
+							<h3>Modal Footer</h3>
+						</div>
+					</div>
+
+
+				</div>
+
+				<!-- <h2>{{responsename}} was successfully added
+				to the Database</h2> -->
+			</div>
+
+		</form>
+
+	</div>
+</body>
 
 
 
