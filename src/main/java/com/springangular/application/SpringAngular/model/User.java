@@ -3,6 +3,7 @@ package com.springangular.application.SpringAngular.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class User {
@@ -11,10 +12,13 @@ public class User {
 	@GeneratedValue
 	private Integer Id;
 	
+	@NotBlank(message="Name is mandatory")
 	private String name;
 	
+	@NotBlank(message="password is mandatory")
 	private String password;
 	
+	@NotBlank(message="email is mandatory")
 	private String email;
 
 	public Integer getId() {

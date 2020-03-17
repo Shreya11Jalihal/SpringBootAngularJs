@@ -22,18 +22,20 @@ public class UserDaoService {
 	public User saveUser(User user) {
 
 		userRepository.save(user);
-		
+
 		return user;
+
+	}
+
+	public Optional<User> getUserByEmail(String email) {
+
+		return userRepository.findByEmail(email);
 
 	}
 
 	public void deleteUser(int id) {
 		Optional<User> user = userRepository.findById(id);
 		userRepository.delete(user.get());
-
-	}
-
-	public void findbyemail(User user) {
 
 	}
 

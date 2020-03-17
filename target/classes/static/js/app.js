@@ -1,7 +1,8 @@
 var myApp = angular.module('myApp', [ 'ngResource', 'ngMessages' ]);
 myApp.controller('myController', function($scope, $http) {
-	$scope.uname = null;
-	$scope.pass = null;
+	$scope.flag=true;
+	$scope.name = null;
+	$scope.password = null;
 	$scope.email = null;
 
 	$scope.onClick = function(name, password, email) {
@@ -20,16 +21,16 @@ myApp.controller('myController', function($scope, $http) {
 						alert("User saved!");
 						$scope.responsename = response.data.name;
 						$scope.flag = true;
-						clearForm();
+						//clearForm();
 					}
 					console.log(response.data);
 
 					function clearForm() {
-						name = null;
-						password = null;
-						email = null;
+						$scope.name = {};
+						$scope.password = null;
+						$scope.email = null;
 						$scope.mand = false;
-
+						
 					}
 
 				});

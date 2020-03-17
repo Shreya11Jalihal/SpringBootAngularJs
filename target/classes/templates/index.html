@@ -5,7 +5,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 <meta charset="ISO-8859-1">
-<title>Simple Login Page</title>
+<title>Sign Up</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.1/angular.min.js"></script>
 <script
@@ -53,17 +53,17 @@
 					ng-show="userForm.email.$dirty && userForm.email.$error.required"
 					class="validation">*Your email is required</span> <span
 					ng-show="userForm.email.$dirty && userForm.email.$error.email"
-					class="validation">*Not a valid Email</span>
+					class="validation">*Not a valid Email</span>	
 			</div>
 			<br> <input type="submit" value="Sign up"
 				ng-disabled="userForm.$invalid" />
 			<p>
-				Do you already have an account?&nbsp;<a href="/thyme.html">Sign
+				Do you already have an account?&nbsp;<a href="/login">Sign
 					in</a>
 			</p>
 
-			<div ng-if="flag">
-				<div id="mymodal" class="modal">
+			<div ng-if="true">	
+				<div id="mymodal" class="modal" tabindex="-1" role="dialog">
 					<div class="modal-content">
 						<div class="modal-header">
 							<span class="close">&times;</span>
@@ -77,12 +77,7 @@
 							<h3>Modal Footer</h3>
 						</div>
 					</div>
-
-
 				</div>
-
-				<!-- <h2>{{responsename}} was successfully added
-				to the Database</h2> -->
 			</div>
 
 		</form>
