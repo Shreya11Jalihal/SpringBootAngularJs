@@ -17,12 +17,16 @@ myApp.controller('myController', function($scope, $http) {
 		$http.post('http://localhost:9095/saveUser', JSON.stringify(data))
 				.then(function(response) {
 					console.log(response);
-					if (response.data) {
+					if (angular.isObject(response.data)) {
 						alert("User saved!");
 						$scope.responsename = response.data.name;
 						$scope.flag = true;
 						//clearForm();
 					}
+					else
+						{
+						alert("User is already registered");
+						}
 					console.log(response.data);
 
 					function clearForm() {

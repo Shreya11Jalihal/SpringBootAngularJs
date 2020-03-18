@@ -30,6 +30,7 @@ public class IndexController {
 	@ResponseBody
 	public User saveUser(@RequestBody User user) {
 		User responseUser = userDaoService.saveUser(user);
+		System.out.println(responseUser);
 
 		return responseUser;
 
@@ -40,15 +41,15 @@ public class IndexController {
 		userDaoService.deleteUser(id);
 	}
 
-	@RequestMapping(value = "/getUser/", params = "data", method = RequestMethod.GET, headers = "Accept=application/json", produces = "application/json")
+	@RequestMapping(value = "/getUser", method = RequestMethod.POST, headers = "Accept=application/json")
 	@ResponseBody
-	public ModelAndView getUser(User user) {
-		System.out.println(user);
-		Optional<User> responseUser = userDaoService.getUserByEmail(user.getemail());
+	public ModelAndView getUser(@RequestBody User data) {
+		System.out.println(data);
+		Optional<User> responseUser = userDaoService.getUserByEmail(data.getemail());
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("login");
+		modelAndView.setViewName("thyme");
+		modelAndView.addObject("user", responseUser.get());
 		System.out.println(modelAndView);
-		modelAndView.addObject("user", responseUser);
 		return modelAndView;
 
 	}
@@ -60,5 +61,14 @@ public class IndexController {
 		return view;
 
 	}
+	
+	@RequestMapping(value = "/thyme")
+	public ModelAndView logged(ModelAndView model) {
+		ModelAndView view = new ModelAndView();
+		view.setViewName("thyme");
+		return view;
+
+	}
+	
 
 }

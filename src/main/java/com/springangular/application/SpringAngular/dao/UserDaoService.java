@@ -20,8 +20,13 @@ public class UserDaoService {
 	}
 
 	public User saveUser(User user) {
-
-		userRepository.save(user);
+		List<User> users = userRepository.findAll();
+		for (User nuser : users) {
+			if (!nuser.getemail().equals(user.getemail())) {
+				userRepository.save(user);
+			} else
+				return null;
+		}
 
 		return user;
 

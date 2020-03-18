@@ -1,5 +1,5 @@
 var login = angular.module('login', ['ngResource']);
-login.controller('signincontroller', function($scope,$http) {
+login.controller('signincontroller', function($scope,$http,$window) {
 	$scope.name = null;
 	$scope.password = null;
 
@@ -9,16 +9,20 @@ login.controller('signincontroller', function($scope,$http) {
 			password : password,
 
 		}
-
-		$http.get('http://localhost:9095/getUser/',{params :{data:data}}, JSON.stringify(data))
+		
+		$http.post('http://localhost:9095/getUser', JSON.stringify(data))
 		.then(function(response) {
 			console.log(response);
 			if (response.data) {
 				alert("Login Successful");
 				$scope.responsename = response.data.name;
-				$scope.flag = true;
+				// $window.location.href = 'thyme.html';
 				
 			}
+			else
+				{
+				alert('User doesnot exist');
+				}
 			console.log(response.data);
 		});
 
