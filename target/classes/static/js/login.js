@@ -1,5 +1,5 @@
 var login = angular.module('login', ['ngResource']);
-login.controller('signincontroller', function($scope,$http,$window) {
+login.controller('signincontroller', function($scope,$http) {
 	$scope.name = null;
 	$scope.password = null;
 
@@ -16,8 +16,6 @@ login.controller('signincontroller', function($scope,$http,$window) {
 			if (response.data) {
 				alert("Login Successful");
 				$scope.responsename = response.data.name;
-				// $window.location.href = 'thyme.html';
-				
 			}
 			else
 				{

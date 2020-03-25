@@ -2,7 +2,9 @@ package com.springangular.application.SpringAngular.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -10,7 +12,7 @@ public class User {
 	
 	@Id
 	@GeneratedValue
-	private Integer Id;
+	private long Id;
 	
 	@NotBlank(message="Name is mandatory")
 	private String name;
@@ -21,12 +23,12 @@ public class User {
 	@NotBlank(message="email is mandatory")
 	private String email;
 
-	public Integer getId() {
+	public long getId() {
 		return Id;
 	}
 
-	public void setId(Integer id) {
-		Id = id;
+	public void setId(long id) {
+		this.Id = id;
 	}
 
 	public String getname() {
@@ -58,9 +60,9 @@ public class User {
 		
 	}
 
-	public User(Integer id, String name, String password, String email) {
+	public User(long id, String name, String password, String email) {
 		super();
-		Id = id;
+		this.Id = id;
 		this.name = name;
 		this.password = password;
 		this.email = email;

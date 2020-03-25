@@ -43,14 +43,10 @@ public class IndexController {
 
 	@RequestMapping(value = "/getUser", method = RequestMethod.POST, headers = "Accept=application/json")
 	@ResponseBody
-	public ModelAndView getUser(@RequestBody User data) {
-		System.out.println(data);
+	public User getUser(@RequestBody User data) {
+
 		Optional<User> responseUser = userDaoService.getUserByEmail(data.getemail());
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("thyme");
-		modelAndView.addObject("user", responseUser.get());
-		System.out.println(modelAndView);
-		return modelAndView;
+		return responseUser.get();
 
 	}
 
@@ -61,7 +57,7 @@ public class IndexController {
 		return view;
 
 	}
-	
+
 	@RequestMapping(value = "/thyme")
 	public ModelAndView logged(ModelAndView model) {
 		ModelAndView view = new ModelAndView();
@@ -69,6 +65,5 @@ public class IndexController {
 		return view;
 
 	}
-	
 
 }
