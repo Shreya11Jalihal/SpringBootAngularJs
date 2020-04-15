@@ -24,7 +24,7 @@
 <body>
 	<div class="container">
 		<h1>Signup and Join us!</h1>
-		<form name="userForm" ng-controller="myController"
+		<form name="userForm" ng-controller="signupController"
 			ng-submit="onClick(name,password,email)" novalidate>
 			<div>
 				<label for="uname">Username</label> <input type="text" id="uname"
@@ -61,25 +61,6 @@
 				Do you already have an account?&nbsp;<a href="/login">Sign
 					in</a>
 			</p>
-
-			<div ng-if="true">	
-				<div id="mymodal" class="modal" tabindex="-1" role="dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<span class="close">&times;</span>
-							<h2></h2>
-						</div>
-						<div class="modal-body">
-							<p>Welcome {{responsename}}! Your Signup is complete</p>
-							
-						</div>
-						<div class="modal-footer">
-							<h3>Modal Footer</h3>
-						</div>
-					</div>
-				</div>
-			</div>
-
 		</form>
 
 	</div>

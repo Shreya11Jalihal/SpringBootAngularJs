@@ -1,12 +1,11 @@
 var myApp = angular.module('myApp', [ 'ngResource', 'ngMessages' ]);
-myApp.controller('myController', function($scope, $http) {
-	$scope.flag=true;
-	$scope.name = null;
-	$scope.password = null;
-	$scope.email = null;
+myApp.controller('signupController', function($scope, $http) {
+	$scope.name;
+	$scope.password;
+	$scope.email;
 
 	$scope.onClick = function(name, password, email) {
-		// creating a object that we will pass it to htt post
+		// creating a object that we will pass it to http post request
 		var data = {
 			name : name,
 			password : password,
@@ -19,24 +18,17 @@ myApp.controller('myController', function($scope, $http) {
 					console.log(response);
 					if (angular.isObject(response.data)) {
 						alert("User saved!");
-						$scope.responsename = response.data.name;
-						$scope.flag = true;
-						//clearForm();
 					}
 					else
 						{
 						alert("User is already registered");
 						}
 					console.log(response.data);
-
 					function clearForm() {
 						$scope.name = {};
 						$scope.password = null;
 						$scope.email = null;
-						$scope.mand = false;
-						
 					}
-
 				});
 	}
 

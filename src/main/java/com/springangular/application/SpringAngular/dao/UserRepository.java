@@ -12,6 +12,9 @@ import com.springangular.application.SpringAngular.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
 	
+	/*
+	 * Query to retrieve a user from the database based on Email Id
+	 */
 	@Query("SELECT t FROM User t Where t.email=:email ")
 	Optional<User> findByEmail(@Param("email") String email);
 
