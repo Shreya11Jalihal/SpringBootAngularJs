@@ -14,4 +14,4 @@ This a project based on Spring boot and AngularJs. AngularJS is a structural fra
  *In this project,I am running the application on the port:9095.You can change the port in application.properties.
  
  A Blog-post is available that provides more details regarding the project:
- Refer the link: https://wordpress.com/block-editor/post/shreyajalihal.wordpress.com/40
+ Refer the link: https://shreyajalihal.wordpress.com/2020/04/12/spring-bootangular-js/
